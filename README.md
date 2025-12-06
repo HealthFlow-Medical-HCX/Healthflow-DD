@@ -1,162 +1,497 @@
-# The European Digital Identity Wallet
+# Egyptian Healthcare Digital Identity Wallet (EHDI)
 
-![Digital Identity for all Europeans - A personal digital wallet for EU citizens and residents](docs/media/top-banner-arf.png)
+[![License](https://img.shields.io/badge/License-EUPL%201.2-blue.svg)](LICENCE)
+[![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)](CHANGELOG.md)
 
-Under the [Electronic Identification, Authentication and Trust Services (eIDAS)
-Regulation](https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation),
-EU Member States may, on a voluntary basis, notify and recognise, national
-electronic identification schemes in their Member States. The recognition of
-notified electronic identification became mandatory in 2018. Yet, there is no
-requirement for Member States to develop a national electronic identification
-and to make it interoperable with those in other Member States. This has led to
-discrepancies between countries. The new [European Digital Identity Regulation](https://eur-lex.europa.eu/eli/reg/2014/910/2024-10-18)
-addresses shortcomings in eIDAS by improving the effectiveness of the framework
-and extending its benefits to the private sector. Member States will offer
-citizens and businesses digital wallets that will be able to link various
-aspects of their national digital identities. These may be provided by public
-authorities or the private sector, if they are recognized by the Member States.
+> **محفظة الهوية الرقمية للرعاية الصحية المصرية**
 
-The EU Digital Identity Wallet will be:
+The Egyptian Healthcare Digital Identity Wallet (EHDI) provides a comprehensive digital identity infrastructure for Egypt's healthcare ecosystem, serving 105+ million citizens. This framework is adapted from the European Digital Identity (EUDI) Architecture and Reference Framework, localized for Egypt's regulatory and operational requirements.
 
-* **made available to anyone who wants to use it**:  Any EU citizen, resident,
-  and business in the EU who would like to make use of the EU Digital Identity
-  will be able to do so.
-* **used widely**: EU Digital Identity Wallets will be used as a way to
-  identify users when providing them with access to public and private digital
-  services across the EU.
-* **controlled by users**: The EU Digital Identity Wallets will enable people
-  to choose and keep track of their identity, data and certificates which they
-  share with third parties. Anything which is not necessary to share will not
-  be shared.
+**[🇪🇬 اقرأ بالعربية](docs/ar/README.md)**
 
-Consumers should also be able to access services online without having to use
-private platforms or unnecessarily sharing personal data. They will have full
-control of the data they share.
+---
 
-## The Architecture and Reference Framework
+## Table of Contents
 
-On 3 June 2021, the European Commission adopted a Recommendation ([COMMISSION
-RECOMMENDATION (EU) 2021/946 of 3 June 2021 on a
-[Common Union Toolbox](https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-toolbox)
-for a coordinated approach towards a [European Digital Identity Framework](https://eur-lex.europa.eu/eli/reco/2021/946),
- [OJ L 210/51, 14.6.2021](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ%3AL%3A2021%3A210%3AFULL))
-calling on Member States to work closely together with the Commission towards
-the development of a Toolbox including a technical Architecture and Reference
-Framework (hereinafter the ARF), a set of common standards and technical
-specifications and a set of common guidelines and best practices.
+- [Overview](#overview)
+- [Egyptian Healthcare Context](#egyptian-healthcare-context)
+- [The EHDI Wallet](#the-ehdi-wallet)
+- [Architecture and Reference Framework](#architecture-and-reference-framework)
+- [Key Components](#key-components)
+- [Use Cases](#use-cases)
+- [Technical Specifications](#technical-specifications)
+- [Regulatory Compliance](#regulatory-compliance)
+- [Repository Contents](#repository-contents)
+- [Contributing](#contributing)
+- [License](#license)
 
-The Recommendation specifies that these outcomes will serve as a basis for the
-implementation of the [European Digital Identity Regulation](https://eur-lex.europa.eu/eli/reg/2014/910/2024-10-18),
-without the process of developing the Toolbox interfering with, or prejudging
-the legislative process.
+---
 
-The Recommendation establishes a structured framework for cooperation between
-Member States, the Commission, and, where relevant, private sector operators to
-develop the Toolbox. The European Digital Identity Cooperation Group (EDICG),
-formerly known as the eIDAS Expert Group, is responsible for:
+## Overview
 
-* exchange best practices and cooperate with the Commission on emerging
-policy initiatives in the field of digital identity wallets, electronic
-identification means and trust services;
-* advising the Commission in the preparation of draft implementing and delegated
-acts;
-* supporting Supervisory Bodies in the implementation of the [European Digital
-Identity Regulation];
-* organising peer reviews of electronic identification schemes;
-* engaging with the Commission and other relevant stakeholders to develop a
-[Common Union Toolbox](https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-toolbox);
+Under Egypt's healthcare digitization initiatives, the Ministry of Health and Population, Egyptian Drug Authority (EDA), and Financial Regulatory Authority (FRA) are working together to establish a unified digital identity framework for healthcare. The EHDI addresses the need for:
 
-The European Digital Identity Cooperation Group's page can be found
-[at the official page](https://digital-strategy.ec.europa.eu/en/policies/european-digital-identity-cooperation-group).
+- **Secure patient identification** across healthcare facilities
+- **Verified healthcare professional credentials** linked to syndicate registrations
+- **Digital prescription authentication** integrated with the Egyptian Medicine Directory
+- **Streamlined insurance claims processing** through the Healthcare Claims Exchange (HCX)
+- **Privacy-preserving health data sharing** under patient control
 
-The European Digital Identity Cooperation Group has since further developed the
-concepts and specifications for the European Digital Identity Framework. The
-current ARF version is based on the [legal text adopted](https://eur-lex.europa.eu/eli/reg/2014/910/2024-10-18)
-by the co-legislators, including the adopted Commission Implementing Regulations:
+The EHDI Wallet will be:
 
+| Feature | Description |
+|---------|-------------|
+| **Universally Available** | Any Egyptian citizen, resident, or healthcare provider can obtain an EHDI Wallet |
+| **Healthcare-Focused** | Primary identification method across Egypt's healthcare system |
+| **User-Controlled** | Citizens choose what health information to share and with whom |
+| **Regulatory Compliant** | Meets EDA, FRA, and Ministry of Health requirements |
+| **Interoperable** | Works across public and private healthcare facilities nationwide |
 
-- [CIR 2024/2977](https://data.europa.eu/eli/reg_impl/2024/2977/oj)
-regarding PID and EAA,
-- [CIR 2024/2979](https://data.europa.eu/eli/reg_impl/2024/2979/oj)
-regarding integrity and core functionalities,
-- [CIR 2024/2980](https://data.europa.eu/eli/reg_impl/2024/2980/oj)
-regarding ecosystem notifications,
-- [CIR 2024/2981](https://data.europa.eu/eli/reg_impl/2024/2981/oj)
-regarding certification of Wallet Solutions,
-- [CIR 2024/2982](https://data.europa.eu/eli/reg_impl/2024/2982/oj)
-regarding protocols and interfaces,
-- [CIR 2025/846](https://data.europa.eu/eli/reg_impl/2025/846/oj)
-regarding cross border identity matching,
-- [CIR 2025/847](https://data.europa.eu/eli/reg_impl/2025/847/oj)
-regarding security breaches of European Digital Identity Wallets,
-- [CIR 2025/848](https://data.europa.eu/eli/reg_impl/2025/848/oj)
-regarding registration of Wallet Relying Parties,
-- [CIR 2025/849](https://data.europa.eu/eli/reg_impl/2025/849/oj)
-regarding the list of certified European Digital Identity Wallets,
-- [CIR 2025/1566](http://data.europa.eu/eli/reg_impl/2025/1566/oj)
-regarding the verification the identity and attributes of a QC or QEAA holder,
-- [CIR 2025/1567](http://data.europa.eu/eli/reg_impl/2025/1567/oj)
-regarding management of remote QSCDs as qualified trust services,
-- [CIR 2025/1568](http://data.europa.eu/eli/reg_impl/2025/1568/oj)
-regarding peer reviews of eID schemes,
-- [CIR 2025/1569](http://data.europa.eu/eli/reg_impl/2025/1569/oj)
-regarding QEAAs and EAAs provided by or on behalf of a public sector body
-responsible for an authentic source,
-- [CIR 2025/1570](http://data.europa.eu/eli/reg_impl/2025/1570/oj)
-regarding notification of information on certified QSCDs,
-- [CIR 2025/1571](http://data.europa.eu/eli/reg_impl/2025/1571/oj)
-regarding the formats and procedures for annual reports by supervisory bodies,
-- [CIR 2025/1572](http://data.europa.eu/eli/reg_impl/2025/1572/oj)
-regarding the format and procedures for notification of intention and
-verification with regard to the initiation of qualified trust services,
-- [CIR 2025/1929](http://data.europa.eu/eli/reg_impl/2025/1929/oj) regarding the binding of date and time to data and establishing the accuracy of the time sources for the provision of qualified electronic time stamps,
-- [CIR 2025/1942](http://data.europa.eu/eli/reg_impl/2025/1942/oj) regarding qualified validation services for qualified electronic signatures and qualified validation services for qualified electronic seals,
-- [CIR 2025/1943](http://data.europa.eu/eli/reg_impl/2025/1943/oj) regarding reference standards for qualified certificates for electronic signatures and qualified certificates for electronic seals,
-- [CIR 2025/1944](http://data.europa.eu/eli/reg_impl/2025/1944/oj) regarding reference standards for processes for sending and receiving data in qualified electronic registered delivery services and as regarding interoperability of those services,
-- [CIR 2025/1945](http://data.europa.eu/eli/reg_impl/2025/1945/oj) regarding the validation of qualified electronic signatures and of qualified electronic seals and the validation of advanced electronic signatures based on qualified certificates and of advanced electronic seals based on qualified certificates,
-- [CIR 2025/1946](http://data.europa.eu/eli/reg_impl/2025/1946/oj) regarding qualified preservation services for qualified electronic signatures and for qualified electronic seals,
-- [CIR 2025/2160](http://data.europa.eu/eli/reg_impl/2025/2160/oj) regarding reference standards, specifications and procedures for the management of risks to the provision of non-qualified trust services,
-- [CIR 2025/2162](http://data.europa.eu/eli/reg_impl/2025/2162/oj) regarding the accreditation of conformity assessment bodies performing the assessment of qualified trust service providers and the qualified trust services they provide, the conformity assessment report and the conformity assessment scheme, 
-- [CID 2025/2164](http://data.europa.eu/eli/dec_impl/2025/2164/oj) regarding the version of the standard on which the common template for the trusted lists is based.
+---
 
-## Contents of the repository
+## Egyptian Healthcare Context
+
+### Regulatory Framework
+
+The EHDI operates within Egypt's healthcare regulatory landscape:
+
+| Regulatory Body | Arabic Name | Primary Role |
+|-----------------|-------------|--------------|
+| Egyptian Drug Authority (EDA) | هيئة الدواء المصرية | Pharmaceutical regulation, medicine directory |
+| Financial Regulatory Authority (FRA) | الهيئة العامة للرقابة المالية | Health insurance oversight, claims standards |
+| Ministry of Health & Population | وزارة الصحة والسكان | Healthcare policy, facility licensing |
+| Universal Health Insurance Authority | الهيئة العامة للتأمين الصحي الشامل | Universal coverage implementation |
+| Medical Syndicate | نقابة الأطباء | Physician registration and licensing |
+| Pharmacists Syndicate | نقابة الصيادلة | Pharmacist registration and licensing |
+
+### Key Statistics
+
+| Metric | Value |
+|--------|-------|
+| Population Served | 105+ million |
+| Daily Prescriptions Processed | 575,000+ |
+| Registered Medicines (EDA) | 47,292 |
+| Healthcare Facilities | 7,000+ |
+| Licensed Pharmacies | 80,000+ |
+| Registered Physicians | 250,000+ |
+| Governorates | 27 |
+
+### Applicable Regulations
+
+- **Law No. 151/2019**: Universal Health Insurance Law
+- **Law No. 2/2018**: Egyptian Drug Authority Establishment
+- **Ministerial Decree 1985/2014**: Electronic Health Records Standards
+- **FRA Circular 2023/47**: Digital Health Insurance Claims
+- **EDA Guidelines 2024**: Digital Prescription Standards
+
+---
+
+## The EHDI Wallet
+
+### Core Capabilities
+
+The EHDI Wallet enables healthcare stakeholders to:
+
+**For Patients (المرضى):**
+- Store and present verified health identity credentials
+- Control access to personal health information
+- Receive and manage digital prescriptions
+- Submit insurance claims digitally
+- Access emergency medical information
+- Maintain vaccination records
+
+**For Healthcare Professionals (المهنيون الصحيون):**
+- Present verified professional credentials
+- Sign digital prescriptions with legal validity
+- Access authorized patient health records
+- Verify patient identity and insurance coverage
+
+**For Healthcare Facilities (المنشآت الصحية):**
+- Verify patient and professional identities
+- Process digital prescriptions
+- Submit insurance claims
+- Access authorized health records
+
+**For Pharmacies (الصيدليات):**
+- Verify prescription authenticity
+- Confirm prescriber credentials
+- Dispense controlled substances with audit trail
+- Process insurance reimbursements
+
+### Identity Types
+
+| Identity Type | Arabic | Issuer | Primary Use |
+|---------------|--------|--------|-------------|
+| Patient Health ID | الهوية الصحية للمريض | Ministry of Health | Patient identification |
+| Professional License | رخصة مزاولة المهنة | Medical/Pharmacists Syndicate | Professional verification |
+| Facility License | ترخيص المنشأة | Ministry of Health | Facility authentication |
+| Insurance Card | بطاقة التأمين | Insurance Providers | Coverage verification |
+
+---
+
+## Architecture and Reference Framework
+
+### Adaptation from EUDI
+
+The EHDI Architecture and Reference Framework (ARF) adapts the European Digital Identity Framework for Egyptian requirements:
+
+| EUDI Component | EHDI Equivalent | Egyptian Localization |
+|----------------|-----------------|----------------------|
+| Person Identification Data (PID) | Egyptian Health ID (EHI) | Integration with 14-digit National ID |
+| Electronic Attestation of Attributes (EAA) | Healthcare Credential Attestation (HCA) | EDA/FRA verified credentials |
+| Qualified Trust Service Provider (QTSP) | Egyptian Healthcare Trust Provider (EHTP) | Ministry-certified trust services |
+| Wallet Provider | EHDI Wallet Provider | Licensed healthcare wallet operators |
+| Relying Party | Healthcare Relying Party (HRP) | Hospitals, pharmacies, insurers |
+
+### Egyptian National ID Integration
+
+The EHDI binds healthcare credentials to the Egyptian National ID (الرقم القومي):
+
+```
+National ID Structure (14 digits):
+┌─────────────────────────────────────────────────────────────┐
+│ [C] [YY] [MM] [DD] [GG] [SSSS] [V]                          │
+│  │   │    │    │    │     │     │                           │
+│  │   │    │    │    │     │     └─ Check digit              │
+│  │   │    │    │    │     └─ Unique sequence (0001-9999)    │
+│  │   │    │    │    └─ Governorate code (01-27)             │
+│  │   │    │    └─ Birth day (01-31)                         │
+│  │   │    └─ Birth month (01-12)                            │
+│  │   └─ Birth year (00-99)                                  │
+│  └─ Century (2=1900s, 3=2000s)                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+This enables:
+- Identity verification against Civil Status Authority
+- Governorate-based healthcare service routing
+- Age verification for pharmaceutical restrictions
+- Cross-reference with health insurance registries
+
+### System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    EHDI ECOSYSTEM ARCHITECTURE                          │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                 │
+│  │   Patient   │    │   Doctor    │    │  Pharmacist │                 │
+│  │   Wallet    │    │   Wallet    │    │   Wallet    │                 │
+│  └──────┬──────┘    └──────┬──────┘    └──────┬──────┘                 │
+│         │                  │                  │                         │
+│         └──────────────────┼──────────────────┘                         │
+│                            │                                            │
+│                   ┌────────▼────────┐                                   │
+│                   │  EHDI Gateway   │                                   │
+│                   │   (HCX Egypt)   │                                   │
+│                   └────────┬────────┘                                   │
+│                            │                                            │
+│    ┌───────────┬───────────┼───────────┬───────────┐                   │
+│    │           │           │           │           │                   │
+│    ▼           ▼           ▼           ▼           ▼                   │
+│ ┌──────┐  ┌──────┐   ┌──────┐   ┌──────┐   ┌──────────┐               │
+│ │ EDA  │  │ FRA  │   │ MoH  │   │ UHIA │   │ Civil    │               │
+│ │      │  │      │   │      │   │      │   │ Registry │               │
+│ └──────┘  └──────┘   └──────┘   └──────┘   └──────────┘               │
+│                                                                         │
+│  Egyptian Drug  Financial   Ministry   Universal   National ID         │
+│   Authority    Regulatory   of Health   Health    Authority            │
+│                Authority               Insurance                        │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Key Components
+
+### 1. Egyptian Health ID (EHI)
+
+The foundational identity credential binding National ID to healthcare services:
+
+| Attribute | Arabic | Source | Required |
+|-----------|--------|--------|----------|
+| National ID Number | الرقم القومي | Civil Registry | Yes |
+| Full Name (Arabic) | الاسم الكامل | Civil Registry | Yes |
+| Full Name (Latin) | الاسم باللاتينية | Civil Registry | Yes |
+| Date of Birth | تاريخ الميلاد | Civil Registry | Yes |
+| Gender | النوع | Civil Registry | Yes |
+| Blood Type | فصيلة الدم | Health Registry | Optional |
+| Emergency Contact | جهة الاتصال للطوارئ | User Provided | Optional |
+| Chronic Conditions | الأمراض المزمنة | Health Registry | Optional |
+| Allergies | الحساسية | Health Registry | Optional |
+
+### 2. Healthcare Professional Credential (HPC)
+
+Verified credentials for healthcare professionals:
+
+| Attribute | Arabic | Source | Required |
+|-----------|--------|--------|----------|
+| National ID Number | الرقم القومي | Civil Registry | Yes |
+| Syndicate Registration | رقم القيد النقابي | Medical Syndicate | Yes |
+| License Number | رقم الترخيص | Ministry of Health | Yes |
+| Specialty | التخصص | Syndicate | Yes |
+| Practice Authorization | تصريح المزاولة | Ministry of Health | Yes |
+| Facility Affiliation | المنشأة التابع لها | Facility Registry | Optional |
+| Controlled Substance Auth | تصريح الأدوية المخدرة | EDA | Optional |
+
+### 3. Digital Prescription Credential
+
+Electronic prescription format integrated with EDA Medicine Directory:
+
+| Attribute | Arabic | Description |
+|-----------|--------|-------------|
+| Prescription ID | رقم الوصفة | Unique identifier |
+| Prescriber ID | معرف الطبيب | HPC reference |
+| Patient ID | معرف المريض | EHI reference |
+| Issue Date | تاريخ الإصدار | Timestamp |
+| Medications | الأدوية | EDA medicine codes |
+| Dosage Instructions | تعليمات الجرعة | Structured dosing |
+| Validity Period | فترة الصلاحية | Expiration date |
+| Refill Authorization | تصريح إعادة الصرف | Refill count |
+| Digital Signature | التوقيع الرقمي | Prescriber signature |
+
+### 4. Insurance Credential
+
+Health insurance coverage verification:
+
+| Attribute | Arabic | Source |
+|-----------|--------|--------|
+| Insurance ID | رقم التأمين | Insurance Provider |
+| Coverage Type | نوع التغطية | Insurance Provider |
+| Policy Number | رقم الوثيقة | Insurance Provider |
+| Coverage Start | بداية التغطية | Insurance Provider |
+| Coverage End | نهاية التغطية | Insurance Provider |
+| Beneficiary Status | حالة المستفيد | UHIA |
+| Co-payment Rate | نسبة المشاركة | Policy Terms |
+
+---
+
+## Use Cases
+
+### Use Case 1: Digital Prescription Flow
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                  DIGITAL PRESCRIPTION FLOW                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌──────────┐         ┌──────────┐         ┌──────────┐        │
+│  │ Patient  │────────▶│  Doctor  │────────▶│ Pharmacy │        │
+│  └──────────┘ Visit   └──────────┘ Rx      └──────────┘        │
+│       │                    │                    │               │
+│       │ Present EHI        │ Sign Rx           │ Verify Rx     │
+│       ▼                    ▼                    ▼               │
+│  ┌──────────┐         ┌──────────┐         ┌──────────┐        │
+│  │  Wallet  │         │  Wallet  │         │  Wallet  │        │
+│  └──────────┘         └──────────┘         └──────────┘        │
+│       │                    │                    │               │
+│       └────────────────────┼────────────────────┘               │
+│                            ▼                                    │
+│                    ┌──────────────┐                             │
+│                    │  HCX Egypt   │                             │
+│                    │   Gateway    │                             │
+│                    └──────────────┘                             │
+│                            │                                    │
+│              ┌─────────────┼─────────────┐                      │
+│              ▼             ▼             ▼                      │
+│         ┌────────┐   ┌────────┐   ┌────────┐                   │
+│         │  EDA   │   │  FRA   │   │ Insurer│                   │
+│         └────────┘   └────────┘   └────────┘                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Process Steps:**
+
+1. Patient visits doctor and presents EHI from EHDI Wallet
+2. Doctor verifies patient identity and insurance coverage
+3. Doctor creates prescription selecting from EDA medicine directory
+4. Doctor signs prescription with HPC credential
+5. Prescription transmitted to patient's wallet via HCX
+6. Patient presents prescription at pharmacy
+7. Pharmacist verifies prescription authenticity and prescriber credentials
+8. Pharmacist dispenses medication and records in system
+9. Claim automatically submitted to insurance via HCX
+
+### Use Case 2: Insurance Claim Processing
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                 INSURANCE CLAIM PROCESSING                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐  │
+│  │ Patient  │───▶│ Provider │───▶│   HCX    │───▶│ Insurer  │  │
+│  │          │    │          │    │  Egypt   │    │          │  │
+│  └──────────┘    └──────────┘    └──────────┘    └──────────┘  │
+│       │              │               │               │          │
+│   1. Service     2. Submit      3. Validate     4. Process     │
+│      Request        Claim          Claim          Claim        │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────────┤
+│  │ Claim Validation Checks:                                    │
+│  │ ✓ Patient eligibility (EHI + Insurance Credential)          │
+│  │ ✓ Provider authorization (HPC + Facility License)           │
+│  │ ✓ Service coding (ICD-10, CPT mapped to Egyptian codes)     │
+│  │ ✓ Medication verification (EDA Medicine Directory)          │
+│  │ ✓ Prior authorization (if required)                         │
+│  │ ✓ Duplicate claim detection                                 │
+│  └─────────────────────────────────────────────────────────────┤
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Use Case 3: Emergency Access
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    EMERGENCY ACCESS FLOW                        │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │ Emergency Responder scans Patient's Emergency QR Code     │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                            │                                    │
+│                            ▼                                    │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │ Immediately Accessible (No Authentication Required):      │  │
+│  │ • Blood type                                              │  │
+│  │ • Critical allergies                                      │  │
+│  │ • Current medications                                     │  │
+│  │ • Emergency contact                                       │  │
+│  │ • Chronic conditions (diabetes, heart disease, etc.)      │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                            │                                    │
+│                            ▼                                    │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │ Extended Access (Healthcare Facility Authentication):     │  │
+│  │ • Complete medical history                                │  │
+│  │ • Recent lab results                                      │  │
+│  │ • Imaging records                                         │  │
+│  │ • Prescription history                                    │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Technical Specifications
+
+### Data Formats
+
+| Standard | Application |
+|----------|-------------|
+| FHIR R4 | Health data exchange |
+| HL7 v2.x | Legacy system integration |
+| ICD-10-AM | Diagnosis coding |
+| SNOMED CT | Clinical terminology |
+| ISO/IEC 18013-5 | Mobile document (mDoc) |
+| SD-JWT | Selective disclosure credentials |
+| OpenID4VCI | Credential issuance |
+| OpenID4VP | Credential presentation |
+
+### Security Requirements
+
+| Requirement | Specification |
+|-------------|---------------|
+| Encryption at Rest | AES-256 |
+| Encryption in Transit | TLS 1.3 |
+| Digital Signatures | ECDSA P-256 |
+| Key Storage | Hardware Security Module (HSM) |
+| Authentication | Multi-factor required |
+| Session Management | 15-minute timeout |
+| Audit Logging | Immutable, 7-year retention |
+
+### Interoperability
+
+| Protocol | Purpose |
+|----------|---------|
+| OAuth 2.0 | Authorization |
+| SAML 2.0 | Legacy federation |
+| SCIM 2.0 | Identity provisioning |
+| REST/JSON | API communication |
+| mTLS | Service authentication |
+
+---
+
+## Regulatory Compliance
+
+### Data Protection
+
+The EHDI complies with Egyptian data protection requirements:
+
+- **Law No. 151/2020**: Personal Data Protection Law
+- Patient consent required for data sharing
+- Right to access, correct, and delete personal data
+- Data localization within Egyptian jurisdiction
+- 72-hour breach notification requirement
+
+### Healthcare-Specific Requirements
+
+- **EDA Compliance**: Medicine directory integration, controlled substance tracking
+- **FRA Compliance**: Claims processing standards, anti-fraud measures
+- **UHIA Integration**: Universal health insurance eligibility verification
+- **Syndicate Verification**: Professional credential authentication
+
+### Certification Requirements
+
+EHDI Wallet Providers must obtain:
+
+1. Ministry of Health Digital Healthcare License
+2. FRA Financial Services Authorization
+3. National Information Technology Industry Development Agency (ITIDA) Security Certification
+4. EDA Integration Certification
+
+---
+
+## Repository Contents
 
 This repository contains:
 
-* "[Architecture and Reference Framework](docs/architecture-and-reference-framework-main.md)"
-the main narrative text that describes the European Digital Identity Wallet and
-its ecosystem.
-* "[Annexes](docs/annexes/README.md)" the list of annexes that provide additional
-information to the main narrative text. In particular, the annexes provide normative
-high-level requirements.
-* "[Discussion Topics](docs/discussion-topics/README.md)" the list of discussion
-topics that are open for public consultation. The topics are organized into
-three iterations, each focusing on a specific set of subjects to be included in
-a major document release.
+| Directory/File | Description |
+|----------------|-------------|
+| [`docs/architecture-and-reference-framework-main.md`](docs/architecture-and-reference-framework-main.md) | Main ARF document |
+| [`docs/annexes/`](docs/annexes/) | Normative requirements and specifications |
+| [`docs/ar/`](docs/ar/) | Arabic language documentation |
+| [`hltr/`](hltr/) | High-Level Technical Requirements |
+| [`security/`](security/) | Security specifications and guidelines |
+| [`CHANGELOG.md`](CHANGELOG.md) | Version history |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution guidelines |
+| [`LICENCE`](LICENCE) | EUPL 1.2 License |
 
-The latest **authoritative version** is tagged as [release/tag in this repository](https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework/releases).
+---
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct,
-and the process for submitting pull requests to us.
+We welcome contributions from healthcare technology stakeholders, government agencies, and the developer community. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-## Versioning
+### Feedback Channels
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available,
-see the [tags on this repository](https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework/tags).
+- **GitHub Issues**: Technical specifications and documentation
+- **Email**: ehdi-feedback@healthflow.eg (placeholder)
+- **Working Groups**: Contact Ministry of Health for participation
 
-## Authors
+---
 
-See the list of [contributors](https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework/graphs/contributors)
-who participated in this project.
+## License
 
-## Licence
+This project is licensed under the European Union Public License 1.2 - see the [LICENCE](LICENCE) file for details.
 
-See the [LICENCE](./LICENCE) file for details.
+---
 
-## [European Commission website](https://commission.europa.eu/index_en)
+## Acknowledgments
 
-* [Contact the European Commission](https://commission.europa.eu/about-european-commission/contact_en)
-* [Follow the European Commission on social media](https://european-union.europa.eu/contact-eu/social-media-channels_en#/search?page=0&institutions=european_commission)
-* [Resources for partners](https://commission.europa.eu/resources-partners_en)
+- European Commission Digital Identity Framework
+- EU Digital Identity Wallet Architecture and Reference Framework
+- Egyptian Ministry of Health and Population
+- Egyptian Drug Authority
+- Financial Regulatory Authority
+- HealthFlow Group Technical Team
+
+---
+
+**Version**: 1.0.0  
+**Last Updated**: December 2024  
+**Status**: Draft for Public Consultation

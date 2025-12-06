@@ -1,121 +1,249 @@
-# CONTRIBUTING.md
+# Contributing to EHDI
 
-Thank you for contributing to the **Architecture & Reference Framework (ARF)**.
-This guide explains how to file issues, propose changes, and help maintain a
-clear, legally-sound, and implementable specification suite.
+# المساهمة في EHDI
 
-## 1) Purpose & scope
+Thank you for your interest in contributing to the Egyptian Healthcare Digital Identity (EHDI) Architecture and Reference Framework.
 
-- This repository contains **informative** guidance that **supports** the
-legally binding **Implementing Regulations**.  
-- **High-Level Requirements (HLRs)** live in Annex 2 (CSV is the source of
-truth) and include back-references to the relevant legal bases.
-- Contributions should **improve clarity, traceability, implementability, and
-interoperability** without altering the scope of the Implementing Acts.
+شكراً لاهتمامك بالمساهمة في إطار العمل المرجعي والمعماري للهوية الرقمية للرعاية الصحية المصرية (EHDI).
 
-> Use RFC 2119/8174 keywords (**MUST/SHALL/SHOULD/MAY**) only when you are
-quoting or precisely tracking normative text from the Regulations or
-Implementing Regulations. Otherwise, use plain language.
+---
 
-## 2) Code of conduct
+## Table of Contents
 
-We expect respectful, constructive discussion. Disagreement is normal; personal
-remarks are not. Be concise, stay on topic, and provide concrete proposals
-(diffs, examples, references).
+- [Code of Conduct](#code-of-conduct)
+- [How to Contribute](#how-to-contribute)
+- [Contribution Types](#contribution-types)
+- [Review Process](#review-process)
+- [Style Guidelines](#style-guidelines)
+- [Contact](#contact)
 
-## 3) How to contribute
+---
 
-### 3.1 Open an issue
+## Code of Conduct
 
-- Use the issue templates where possible (bug, enhancement, question, editorial).
-- Provide context: affected section(s), concrete problem statements, and-if
-applicable-security or privacy impacts.
-- Link to prior discussions or related specs (ETSI, CEN, OIDF, ISO, IETF, W3C,
-eIDAS guidance, etc.).
-- Describe the issue in detail, including relevant context, background, expected
-outcome, and (if applicable) a proposed fix.
-- Label your issue with one or more of the labels below to aid triage and prioritization.
-- Avoid duplicates: search existing issues before opening a new one.
+### Our Pledge
 
-| Label                         | Description                                                                                                      |
-|------------------------------|------------------------------------------------------------------------------------------------------------------|
-| Content Clarifications       | Questions about specific passages; requests to explain or disambiguate content.                                 |
-| Suggestions for Improvements | Proposals to enhance clarity, completeness, accuracy, or structure.                                             |
-| Errors and Corrections       | Typos, grammar, broken links, factual inaccuracies—include the source if you have one.                          |
-| Compatibility & Integration  | Interoperability with other systems/standards; implementation considerations; cross-doc alignment.              |
-| Enhancement Requests         | Requests for new sections, figures, examples, or supporting materials.                                          |
-| Formatting & Styling         | Layout, headings hierarchy, tables, diagrams, and consistency issues.                                            |
-| Documentation Standards      | Conventions, glossary alignment, normative language (RFC 2119), or citation style.                              |
-| Licence & Legal Concerns     | Questions about licensing, attribution, reuse rights, or legal clarity.                                          |
-| Technical Clarification      | Deep technical questions; requests for more precise requirements or references to standards/specifications.      |
+We are committed to providing a welcoming and inclusive environment for all contributors, regardless of background, identity, or experience level.
 
-### 3.2 Submit a pull request (PR)
+### Expected Behavior
 
-- Keep PRs **small and focused**; large PRs should be split by topic.
-- Include a **clear problem statement**, rationale, and a **before/after diff**
-in the description.
-- If the change affects HLRs/Annex 2, update the **CSV** and provide
-traceability notes.
-- Add/update diagrams and tables as needed; include sources for figures.
-- Update the **Change Log** when the change is externally visible.
+- Be respectful and considerate in all communications
+- Welcome diverse perspectives and experiences
+- Accept constructive criticism gracefully
+- Focus on what is best for the Egyptian healthcare community
+- Use professional language appropriate for government documentation
 
-## 4) Versioning & change log
+### Unacceptable Behavior
 
-- The main document keeps a **concise changelog**. Larger editorial details
-remain in PR history.
-- Use **semver-like tags** for document sets when helpful (e.g., `vX.Y`), noting
-that legal texts remain the sole normative reference.
+- Harassment, discrimination, or offensive comments
+- Personal or political attacks
+- Publishing others' private information
+- Conduct that could be considered inappropriate in a professional setting
 
-## 5) Style guide (editorial)
+---
 
-- **Headings:** Sentence case for prose; Title Case for defined terms (e.g.,
-*Wallet Unit*, *User*).
-- **Acronyms:** Expand on first use (*Person Identification Data (PID)*,
-*Qualified Electronic Attestation of Attributes (QEAA)*, *Public EAA (PuB-EAA)*,
-*WSCA/WSCD*), then use consistently.
-- **Terminology:** Lowercase generic nouns unless they are **defined terms**.
-- **Numbered lists:** Prefer short lists; use tables for checklists and matrices.
-- **Figures:** Provide a short caption and a source. Optimize diagrams for
-legibility and accessibility.
-- **Tables:** Add header rows; keep lines under ~100 characters where feasible.
-- **Links & citations:** Use stable identifiers (OJ, RFCs, ETSI TS/EN numbers).
+## How to Contribute
 
-## 6) Document conventions (traceability)
+### GitHub Issues
 
-- Each requirement/statement that **depends** on an Implementing Regulation
-should include a **reference** (article, paragraph) where applicable.
-- HLRs in **Annex 2 (CSV)** are the **single source of truth** for requirement
-indexing and cross-references.
-- Where security assurance is discussed (e.g., WSCD), reference the **common
-risk register** rather than duplicating threat lists across chapters.
+Use GitHub Issues to:
+- Report errors or inconsistencies in documentation
+- Suggest improvements to specifications
+- Ask questions about requirements
+- Propose new features or use cases
 
-## 7) Accessibility
+### Pull Requests
 
-When proposing UI/flow text or diagrams, ensure they can be tested against
-**WCAG** and **WAI-ARIA** guidance (informative). Provide text alternatives for
-images and meaningful labels in examples.
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/your-feature`)
+3. **Make** your changes following our style guidelines
+4. **Commit** with clear, descriptive messages
+5. **Push** to your fork
+6. **Submit** a pull request
 
-## 8) Licensing & IPR
+### Working Groups
 
-- All contributions are subject to the repository **LICENSE**. By contributing,
-you confirm you have the right to do so under that license.
-- Avoid embedding third-party content unless its license is compatible and
-clearly attributed.
+For substantial contributions, consider participating in official working groups:
 
-## 9) Checklists
+| Working Group | Focus Area | Contact |
+|---------------|------------|---------|
+| Architecture | Core framework design | arch-wg@ehdi.gov.eg |
+| Security | Security requirements | security-wg@ehdi.gov.eg |
+| Interoperability | Standards & protocols | interop-wg@ehdi.gov.eg |
+| Implementation | Deployment guidance | impl-wg@ehdi.gov.eg |
 
-### PR checklist (quick)
+*(Email addresses are placeholders)*
 
-- [ ] Problem statement and scope
-- [ ] Legal references and traceability updated
-- [ ] Annex 2 CSV updated (if applicable)
-- [ ] Figures/tables updated (if applicable)
-- [ ] Changelog entry added (if externally visible)
-- [ ] Self-review for clarity, testability, and interoperability
+---
 
-## 10) Contact
+## Contribution Types
 
-If you have questions about scope or process, open an issue with label
-`question` or contact the editors listed in the repository.
+### Documentation Improvements
 
-Thanks again for helping make the ARF clearer and more useful.
+- Fix typos, grammatical errors
+- Improve clarity of explanations
+- Add examples and diagrams
+- Translate content to Arabic
+
+### Technical Specifications
+
+- Propose requirement changes
+- Suggest protocol improvements
+- Identify security considerations
+- Recommend interoperability standards
+
+### Use Case Proposals
+
+- Describe new healthcare use cases
+- Document user journeys
+- Identify integration requirements
+- Propose credential types
+
+### Implementation Feedback
+
+- Report implementation challenges
+- Share lessons learned
+- Suggest practical improvements
+- Provide conformance test results
+
+---
+
+## Review Process
+
+### For Documentation
+
+1. Submitted PR reviewed within 5 business days
+2. Technical accuracy verified
+3. Editorial review for clarity
+4. Arabic translation verified (if applicable)
+5. Merge upon approval
+
+### For Specifications
+
+1. Initial review by maintainers
+2. Technical working group review
+3. Public comment period (for significant changes)
+4. Regulatory review (if compliance-related)
+5. Final approval and merge
+
+### Review Criteria
+
+| Criteria | Description |
+|----------|-------------|
+| Accuracy | Technically correct and complete |
+| Clarity | Easy to understand for target audience |
+| Consistency | Aligns with existing documentation |
+| Compliance | Meets regulatory requirements |
+| Localization | Appropriate for Egyptian context |
+
+---
+
+## Style Guidelines
+
+### Language
+
+- Primary language: English
+- Arabic versions provided for user-facing content
+- Use clear, professional language
+- Avoid jargon unless necessary (define when used)
+
+### Document Structure
+
+- Use descriptive headings
+- Include table of contents for long documents
+- Use tables for structured information
+- Include diagrams where helpful
+
+### Markdown Conventions
+
+```markdown
+# Main Title
+## Section
+### Subsection
+
+**Bold** for emphasis
+`code` for technical terms
+[Link text](url)
+
+| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |
+```
+
+### Arabic Content
+
+For Arabic content, use RTL wrapper:
+
+```html
+<div dir="rtl" align="right">
+
+المحتوى العربي هنا
+
+</div>
+```
+
+### Diagrams
+
+- Use ASCII art for simple diagrams (compatible with all viewers)
+- Use Mermaid for complex diagrams
+- Include alt text descriptions
+
+### Requirement Format
+
+```
+**[REQ-ID]** Requirement Title
+
+The [ACTOR] [MUST/SHOULD/MAY] [ACTION] [CONDITION].
+
+| Attribute | Value |
+|-----------|-------|
+| Category | [Category] |
+| Priority | [High/Medium/Low] |
+| Status | [Draft/Review/Approved] |
+```
+
+---
+
+## Versioning
+
+We use [Semantic Versioning](https://semver.org/):
+
+- **MAJOR**: Incompatible specification changes
+- **MINOR**: Backward-compatible additions
+- **PATCH**: Backward-compatible fixes
+
+---
+
+## License
+
+By contributing, you agree that your contributions will be licensed under the [EUPL 1.2](LICENCE).
+
+---
+
+## Contact
+
+### General Inquiries
+
+- **Email**: ehdi-contrib@healthflow.eg *(placeholder)*
+- **GitHub**: [Issues](https://github.com/HealthFlow-Medical-HCX/Healthflow-DD/issues)
+
+### Security Issues
+
+For security vulnerabilities, please email: security@ehdi.gov.eg *(placeholder)*
+
+Do not report security issues through public GitHub issues.
+
+---
+
+## Acknowledgments
+
+We appreciate all contributions to the EHDI framework. Contributors will be acknowledged in:
+- CHANGELOG for specific contributions
+- Annual contributor recognition
+- Working group acknowledgments
+
+---
+
+**Thank you for helping build Egypt's healthcare digital identity infrastructure!**
+
+**!شكراً لمساعدتكم في بناء البنية التحتية للهوية الرقمية للرعاية الصحية في مصر**

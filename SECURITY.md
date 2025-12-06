@@ -1,67 +1,228 @@
-# EU Digital Identity Wallet Vulnerability Disclosure Policy (VDP)
+# Security Policy
 
-At the European Commission, we treat the security of our Communication and
-Information Systems as a top priority, in line with Commission Decision EC
-2017/46. However, vulnerabilities can never be completely eliminated, despite
-all efforts. If exploited, such vulnerabilities can harm the confidentiality,
-integrity or availability of the Commission's systems and of the information
-processed therein. To identify and remediate vulnerabilities as soon as
-possible, we value the input of external entities acting in good faith, and we
-encourage responsible vulnerability research and disclosure. This document sets
-out our definition of good faith in the context of finding and reporting
-vulnerabilities, as well as what you can expect from us in return.
+# سياسة الأمان
+
+## Reporting Security Vulnerabilities
+
+## الإبلاغ عن الثغرات الأمنية
+
+The Egyptian Healthcare Digital Identity (EHDI) team takes security seriously. We appreciate your efforts to responsibly disclose any security vulnerabilities you find.
+
+يأخذ فريق الهوية الرقمية للرعاية الصحية المصرية (EHDI) الأمان على محمل الجد. نقدر جهودكم في الإفصاح المسؤول عن أي ثغرات أمنية تجدونها.
+
+---
+
+## Reporting Process
+
+### DO Report
+
+- Security vulnerabilities in EHDI specifications
+- Privacy concerns in credential handling
+- Cryptographic weaknesses
+- Authentication or authorization issues
+- Data exposure risks
+
+### DO NOT
+
+- Report vulnerabilities through public GitHub issues
+- Disclose vulnerabilities publicly before resolution
+- Access or modify data belonging to others
+- Perform testing that could disrupt services
+
+---
+
+## How to Report
+
+### Email (Preferred)
+
+Send security reports to: **security@ehdi.gov.eg** *(placeholder)*
+
+### Report Contents
+
+Please include:
+
+1. **Description**: Clear description of the vulnerability
+2. **Location**: Specific document, section, or specification affected
+3. **Impact**: Potential impact if exploited
+4. **Reproduction**: Steps to reproduce (if applicable)
+5. **Suggestion**: Recommended fix (if any)
+
+### PGP Encryption
+
+For sensitive reports, use our PGP key:
+
+```
+Key ID: [To be published]
+Fingerprint: [To be published]
+```
+
+---
+
+## Response Timeline
+
+| Phase | Timeline |
+|-------|----------|
+| Acknowledgment | Within 48 hours |
+| Initial Assessment | Within 5 business days |
+| Status Update | Every 7 days until resolution |
+| Resolution Target | 90 days for critical issues |
+
+---
+
+## Severity Classification
+
+### Critical (الحرجة)
+
+- Credential forgery vulnerabilities
+- Authentication bypass
+- Private key exposure
+- Mass data breach potential
+
+**Response**: Immediate action, emergency update if needed
+
+### High (العالية)
+
+- Unauthorized data access
+- Session hijacking
+- Privilege escalation
+- Cryptographic weaknesses
+
+**Response**: Priority fix within 30 days
+
+### Medium (المتوسطة)
+
+- Information disclosure
+- Denial of service potential
+- Insufficient logging
+- Configuration weaknesses
+
+**Response**: Fix within 60 days
+
+### Low (المنخفضة)
+
+- Minor information leakage
+- Best practice deviations
+- Documentation inconsistencies
+
+**Response**: Fix within 90 days
+
+---
 
 ## Scope
 
-- Architecture and Reference Framework
-- Source code in [eu-digital-identity-wallet](https://github.com/eu-digital-identity-wallet) public repositories
+### In Scope
 
-## If you have identified a vulnerability, please do the following
+- EHDI Architecture and Reference Framework specifications
+- Credential format definitions
+- Protocol specifications (OpenID4VCI, OpenID4VP adaptations)
+- Security requirement specifications
+- Trust framework definitions
 
-- E-mail your findings to <EC-VULNERABILITY-DISCLOSURE@ec.europa.eu>, specifying
-whether or not you agree to your name or pseudonym being made publicly available
-as the discoverer of the problem.
-- Encrypt your findings using our [PGP key](https://ec.europa.eu/assets/digit/pgpkey/ec-vulnerability-disclosure-pgp.txt)
-to prevent this critical information from falling into the wrong hands.
-- Provide us with sufficient information to reproduce the problem so that we can
-resolve it as quickly as possible. Usually, the IP address or the URL of the
-affected system and a description of the vulnerability will be sufficient, but
-complex vulnerabilities may require further explanation in terms of technical
-information or potential proof-of-concept code.
-- Provide your report in English, preferably, or in any other official language
-of the European Union.
-- Inform us if you agree to make your name/pseudonym publicly available as the
-discoverer of the vulnerability.
+### Out of Scope
 
-## Please do not do the following
+- Third-party implementations (unless EHDI reference implementation)
+- Infrastructure not managed by EHDI team
+- Social engineering attacks
+- Physical security
 
-- Do not take advantage of the vulnerability or problem you have discovered, for
-example, by downloading more data than necessary to demonstrate the
-vulnerability, deleting, or modifying other people’s data.
-- Do not reveal any data downloaded during the discovery to any other parties.
-- Do not reveal the problem to others until it has been resolved.
-- Do not perform the following actions:
-    - Placing malware (virus, worm, Trojan horse, etc.) within the system.
-    - Reading, copying, modifying or deleting data from the system.
-    - Making changes to the system.
-    - Repeatedly accessing the system or sharing access with others.
-    - Using any access obtained to attempt to access other systems.
-    - Changing access rights for any other users.
-    - Using automated scanning tools.
-    - Using the so-called "brute force" of access to the system.
-    - Using denial-of-service or social engineering (phishing, vishing, spam, etc.).
-- Do not use attacks on physical security.
+---
 
-## What we promise
+## Safe Harbor
 
-- We will respond to your report within three business days with our evaluation
-of the report.
-- We will handle your report with strict confidentiality.
-- Where possible, we will inform you when the vulnerability has been remedied.
-- We will process the personal data that you provide (such as your e-mail
-address and name) in accordance with the applicable data protection legislation
-and will not pass on your personal details to third parties without your
-permission.
-- In the public information concerning the problem reported, we will publish
-your name as the discoverer of the problem if you have agreed to this in your
-initial e-mail
+We support safe harbor for security researchers who:
+
+- Act in good faith
+- Avoid privacy violations
+- Avoid disruption of services
+- Do not access or modify data beyond necessity
+- Report findings responsibly
+
+We will not pursue legal action against researchers who follow these guidelines.
+
+---
+
+## Security Standards
+
+The EHDI follows these security standards:
+
+| Standard | Application |
+|----------|-------------|
+| ISO 27001 | Information security management |
+| ISO 27701 | Privacy information management |
+| NIST Cybersecurity Framework | Security controls |
+| OWASP Guidelines | Application security |
+| Egyptian Data Protection Law | Personal data handling |
+
+---
+
+## Security Requirements Summary
+
+### Cryptographic Requirements
+
+| Function | Requirement |
+|----------|-------------|
+| Credential Signing | ECDSA P-256 or stronger |
+| Key Exchange | ECDH P-256 or stronger |
+| Symmetric Encryption | AES-256-GCM |
+| Transport Security | TLS 1.3 |
+| Hashing | SHA-256 minimum |
+
+### Authentication Requirements
+
+| Level | Requirements |
+|-------|--------------|
+| Low | Password/PIN |
+| Substantial | Multi-factor (password + device) |
+| High | Biometric + hardware-backed key |
+
+### Data Protection Requirements
+
+| Requirement | Implementation |
+|-------------|----------------|
+| At Rest | AES-256 encryption |
+| In Transit | TLS 1.3 |
+| Key Storage | Hardware Security Module (HSM) |
+| Access Control | Role-based, least privilege |
+| Audit Logging | Immutable, 7-year retention |
+
+---
+
+## Security Contacts
+
+### Primary Contact
+
+**Email**: security@ehdi.gov.eg *(placeholder)*
+
+### Backup Contact
+
+**Email**: ehdi-security@healthflow.eg *(placeholder)*
+
+### Emergency Contact
+
+For critical vulnerabilities requiring immediate attention:
+**Phone**: +20-XX-XXXX-XXXX *(placeholder)*
+
+---
+
+## Acknowledgments
+
+We acknowledge security researchers who help improve EHDI security. With your permission, we will credit you in our security acknowledgments.
+
+### Hall of Fame
+
+*No entries yet - be the first!*
+
+---
+
+## Updates
+
+This security policy is reviewed quarterly and updated as needed.
+
+**Last Updated**: December 2024  
+**Next Review**: March 2025
+
+---
+
+**Egyptian Healthcare Digital Identity**  
+**Security Team**  
+**Arab Republic of Egypt**
